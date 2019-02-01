@@ -4,7 +4,6 @@ get '/*' do
   out = []
   out << ENV['HEROKU_RELEASE_VERSION']
   out << ENV['HEROKU_RELEASE_CREATED_AT']
-  process_started = Time.now.to_s
 
   # created in .profile
   File.open('process_started_at', 'r') do |f|
@@ -12,6 +11,8 @@ get '/*' do
       out << line
     end
   end
+
+  out = out.join("\r")
 
   puts out
   return out
