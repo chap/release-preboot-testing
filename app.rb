@@ -2,8 +2,8 @@ require "sinatra"
 
 get '/*' do
   out = []
-  out << ENV['HEROKU_RELEASE_VERSION']
-  out << ENV['HEROKU_RELEASE_CREATED_AT']
+  out << "Release Version: #{ENV['HEROKU_RELEASE_VERSION']}"
+  out << "Release Created: #{ENV['HEROKU_RELEASE_CREATED_AT']}"
 
   # created in .profile
   File.open('process_started_at', 'r') do |f|
